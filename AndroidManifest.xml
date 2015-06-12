@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.joy.android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name="cn.joy.android.demo.TestApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        >
+        <activity
+            android:name="cn.joy.android.demo.AndroidTestActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        <activity
+            android:label="@string/app_name"
+            android:name="com.test.launchmode.ActA" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+
+        <activity
+            android:name="cn.joy.android.demo.launchmode.ActB"
+            android:launchMode="singleInstance"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.launchmode.ActC"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.ListviewActivity"
+            android:label="@string/title_activity_listview" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.CustomListviewActivity"
+            android:label="@string/title_activity_customlistview" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.GridviewActivity"
+            android:label="@string/title_activity_gridview" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.tab.FirstTabActivity"
+            android:label="@string/title_activity_first_tab" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.tab.SecondTabActivity"
+            android:label="@string/title_activity_second_tab" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.tab.ThirdTabActivity"
+            android:label="@string/title_activity_third_tab" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TabviewActivity"
+            android:label="@string/title_activity_tabview" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.SmsActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.Sms2Activity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TestFormActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TestArcgisActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.arcgis.LocateAddressActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.arcgis.LocateLatAndLonActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.arcgis.LocateMyPlaceActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.LocationNetworkActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TestTextViewSpanActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TestTaskActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TextStyleActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+        </activity>
+        <activity
+            android:name="cn.joy.android.demo.TestVideoActivity"
+            android:theme="@style/NoTitle_FullScreen" >
+            <activcn.joy.android.demo.share.ShareActivity>
+            </activcn.joy.android.demo.share.ShareActivity>
+        </activity>
+        <activity
+            android:name="com.liyy.share.ShareActivity"
+            android:label="Share To YYLee" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" >
+                </action>
+
+                <category android:name="android.intent.category.DEFAULT" >
+                </category>
+
+                <data android:mimeType="image/*" >
+                </data>
+                <data android:mimeType="text/*" >
+                </data>
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="cn.joy.android.demo.SmsReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" >
+                </action>
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="6b8d99e2a5aa8cf0145cdbcbb7f4a1fd" />
+    </application>
+
+</manifest>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/lightblue"
+    android:id="@+id/formLayout" >
+<!-- 	<TextView 
+	    android:id="@+id/selectformtypevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dip"
+	    /> -->
+	 
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="25dip"
+    android:layout_height="25dip"
+    android:layout_gravity="right"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:onClick="selectFormType"
+    >
+    <ImageView 
+        android:id="@+id/selectformtype"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:src="@drawable/formtype_select"
+        />
+	</LinearLayout>
+</LinearLayout>

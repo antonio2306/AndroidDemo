@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地址"
+        />
+    <EditText 
+        android:id="@+id/address"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:text="上海浦东世纪大道"
+        />
+    <Button
+        android:id="@+id/locate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位"
+        android:onClick="locateByAddress"
+        />
+	</LinearLayout>
+	
+	    
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="纬度"
+        />
+    <EditText 
+        android:id="@+id/lat"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:text="31.2259025"
+        />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="经度"
+        />
+    <EditText 
+        android:id="@+id/lon"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:text="121.6300329"
+        />
+    <Button
+        android:id="@+id/locate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位"
+        android:onClick="locateByLatAndLon"
+        />
+	</LinearLayout>
+	
+	<Button
+        android:id="@+id/myplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的位置"
+        android:onClick="locateMyPlace"
+        />
+</LinearLayout>

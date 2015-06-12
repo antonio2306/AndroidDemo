@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView 
+        android:id="@+id/shareImage"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        
+        />
+    
+    <EditText 
+        android:id="@+id/shareText"
+        android:layout_width="300dip"
+        android:layout_height="50dip"
+        android:text="aaaa"
+        />
+
+</LinearLayout>

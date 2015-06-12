@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"  >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:orientation="horizontal"
+                android:padding="2dip" >
+
+                <TextView
+                    android:id="@+id/display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:autoLink="web"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/value"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:minHeight="50dip"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <!-- android:background="@drawable/edit_text" -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:text="hello, http://www.6665.com/thread-2977275-1-1.html" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:text="hello too, http://www.baidu.com" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:editable="false"
+                android:text="hello 3, http://www.baidu.com  13812312333" />
+
+            <cn.joy.android.demo.component.CopyTextView
+                android:id="@+id/value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:editable="false"
+                android:text="hello 4, http://www.baidu.com " />
+
+            <Button
+                android:id="@+id/listview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listview1" />
+
+            <Button
+                android:id="@+id/listview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toListView2"
+                android:text="@string/listview2" />
+
+            <Button
+                android:id="@+id/gridview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gridview" />
+
+            <Button
+                android:id="@+id/sendmsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toSendMsg"
+                android:text="@string/sendmsg" />
+
+            <Button
+                android:id="@+id/sendmsg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toSendMsg2"
+                android:text="@string/sendmsg2" />
+
+            <Button
+                android:id="@+id/testformspiner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestFormSpinner"
+                android:text="@string/testformspiner" />
+
+            <Button
+                android:id="@+id/testarcgis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestArcgis"
+                android:text="@string/testarcgis" />
+
+            <Button
+                android:id="@+id/testarcgis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestGaode"
+                android:text="@string/testgaode" />
+
+            <Button
+                android:id="@+id/testtextlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestTextLink"
+                android:text="测试文本链接" />
+
+            <Button
+                android:id="@+id/testtask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestTask"
+                android:text="测试task" />
+
+            <Button
+                android:id="@+id/testtextstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestTextStyle"
+                android:text="text style" />
+
+            <Button
+                android:id="@+id/testvideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestVideo"
+                android:text="Test Video" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

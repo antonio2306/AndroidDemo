@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidTestApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello">Hello</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="optionsDefaultTitle">选择</string>
+    <string name="title_activity_listview">ListviewActivity</string>
+    <string name="title_activity_customlistview">CustomListviewActivity</string>
+    <string name="title_activity_gridview">GridviewActivity</string>
+    <string name="title_activity_first_tab">FirstTabActivity</string>
+    <string name="title_activity_second_tab">SecondTabActivity</string>
+    <string name="title_activity_third_tab">ThirdTabActivity</string>
+    <string name="title_activity_tabview">TabviewActivity</string>
+    <string name="listview1">列表1</string>
+    <string name="listview2">列表2</string>
+    <string name="gridview">网格</string>
+    <string name="sendmsg">发短信</string>
+    <string name="sendmsg2">发短信2</string>
+    <string name="testformspiner">下拉选择</string>
+    <string name="testarcgis">Arcgis</string>
+    <string name="testgaode">测试高德</string>
+    <string name="txtPhoneNo">号码</string>
+    <string name="txtContent">内容</string>
+    <string name="btnText">发送</string>
+    <string name="bothphoneandcontent">请输入号码和内容！</string>
+    
+    <string name="arcgis_basemap_url">http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer</string>
+    <string name="arcgis_geocode_url">http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer</string>
+
+</resources>
