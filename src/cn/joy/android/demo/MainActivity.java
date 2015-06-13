@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class AndroidTestActivity extends Activity {
+public class MainActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class AndroidTestActivity extends Activity {
         listview1Btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent toListview1Intent = new Intent(AndroidTestActivity.this, ListviewActivity.class);
+				Intent toListview1Intent = new Intent(MainActivity.this, ListviewActivity.class);
 				startActivity(toListview1Intent);
 			}
 		});

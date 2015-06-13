@@ -1,7 +1,4 @@
-/**
- * 
- */
-package cn.joy.android.demo.gaode;
+package cn.joy.android.demo.utils;
 
 import android.content.Context;
 import android.widget.Toast;
