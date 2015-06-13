@@ -1,14 +1,12 @@
 package cn.joy.android.demo.video;
 
 import java.io.File;
-import java.io.Serializable;
-
-import cn.joy.android.R;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.PixelFormat;
+import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -22,7 +20,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import cn.joy.android.R;
 
 public class RecordVideoActivity extends Activity implements SurfaceHolder.Callback {
 	private TextView tvTime;
@@ -32,6 +32,7 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 	private Button btnOK;
 	private Button btnCancel;
 
+	private Camera camera;
 	private MediaRecorder mediaRecorder;// 录制视频的类
 	private SurfaceView videoView;// 显示视频的控件
 	private SurfaceHolder surfaceHolder;
@@ -85,7 +86,7 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
 
 		// 设置横屏显示
-		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		// setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		// 选择支持半透明模式,在有surfaceview的activity中使用。
@@ -126,7 +127,7 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 				break;
 			case R.id.btn_video_ok:
 				Intent intent = new Intent();
-				if(videoFile!=null)
+				if (videoFile != null)
 					intent.putExtra("path", videoFile.getAbsolutePath());
 				setResult(RESULT_OK, intent);
 				finish();
@@ -149,11 +150,14 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 		} else
 			mediaRecorder = new MediaRecorder();// 创建mediarecorder对象
 
+		camera.unlock();
+		mediaRecorder.setCamera(camera);
+
 		// 设置录制视频源为Camera(相机)
 		mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 		// mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-		
-		//mediaRecorder.setOrientationHint(90);//视频旋转90度
+
+		mediaRecorder.setOrientationHint(90);//视频旋转90度
 		// 设置录制完成后视频的封装格式THREE_GPP为3gp.MPEG_4为mp4
 		mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 		// 设置录制的视频编码h263 h264
@@ -226,6 +230,11 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 			mediaRecorder = null;
 		}
 
+		if (camera != null) {
+			camera.release();
+			camera = null;
+		}
+
 		minute = 0;
 		second = 0;
 		handler.removeCallbacks(timeRun);
@@ -234,7 +243,18 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-		// 将holder，这个holder为开始在oncreat里面取得的holder，将它赋给surfaceHolder
+		camera = Camera.open(); // 获取Camera实例
+		try {
+			camera.setPreviewDisplay(holder);
+			videoView.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+		} catch (Exception e) {
+			// 如果出现异常，则释放Camera对象
+			camera.release();
+		}
+		camera.setDisplayOrientation(90);// 设置预览视频时时竖屏
+		// 启动预览功能
+		camera.startPreview();
+		// 将holder，这个holder为开始在onCreate里面取得的holder，将它赋给mSurfaceHolder
 		surfaceHolder = holder;
 	}
 
