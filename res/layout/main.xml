@@ -20,6 +20,13 @@
                 android:autoLink="all"
                 android:editable="false"
                 android:text="hello 4, http://www.baidu.com " />
+            
+            <Button
+                android:id="@+id/testvideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toTestVideo"
+                android:text="Test Video" />
 
             <Button
                 android:id="@+id/listview1"
@@ -96,12 +103,6 @@
                 android:onClick="toTestTextStyle"
                 android:text="text style" />
 
-            <Button
-                android:id="@+id/testvideo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toTestVideo"
-                android:text="Test Video" />
         </LinearLayout>
     </ScrollView>
 
