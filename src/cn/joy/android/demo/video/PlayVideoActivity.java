@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.PixelFormat;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -14,21 +15,25 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.media.MediaPlayer.OnVideoSizeChangedListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.MediaController;
+import android.widget.MediaController.MediaPlayerControl;
 import cn.joy.android.R;
 
-public class PlayVideoActivity extends Activity implements OnCompletionListener, OnErrorListener, OnInfoListener,
-		OnPreparedListener, OnSeekCompleteListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
+public class PlayVideoActivity extends Activity implements OnCompletionListener, OnErrorListener, OnInfoListener, OnPreparedListener, OnSeekCompleteListener,
+		OnVideoSizeChangedListener, SurfaceHolder.Callback, MediaPlayerControl {
 	private Display currDisplay;
 	private SurfaceView videoView;
 	private SurfaceHolder surfaceHolder;
 	private MediaPlayer mPlayer;
+	private MediaController mController;
+	private Handler handler = new Handler();
 	private int vWidth, vHeight;
-
-	private boolean isPlay = false;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,8 +54,10 @@ public class PlayVideoActivity extends Activity implements OnCompletionListener,
 		Intent intent = getIntent();
 		String path = intent.getStringExtra("path");
 		if (path != null && path.trim().length() > 0) {
-			if (mPlayer == null)
+			if (mPlayer == null) {
 				mPlayer = new MediaPlayer();
+				mController = new MediaController(this);
+			}
 
 			// 如果是播放状态，就从新开始播放
 			if (mPlayer.isPlaying()) {
@@ -69,6 +76,7 @@ public class PlayVideoActivity extends Activity implements OnCompletionListener,
 			mPlayer.setOnPreparedListener(this);
 			mPlayer.setOnSeekCompleteListener(this);
 			mPlayer.setOnVideoSizeChangedListener(this);
+			mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 			try {
 				mPlayer.setDataSource(path);
@@ -104,6 +112,15 @@ public class PlayVideoActivity extends Activity implements OnCompletionListener,
 		mPlayer.setDisplay(holder);
 		// 在指定了MediaPlayer播放的容器后，我们就可以使用prepare或者prepareAsync来准备播放了
 		mPlayer.prepareAsync();
+
+		mController.setMediaPlayer(this);
+		mController.setAnchorView(videoView);
+		handler.post(new Runnable() {
+			public void run() {
+				mController.setEnabled(true);
+				mController.show();
+			}
+		});
 	}
 
 	@Override
@@ -118,6 +135,7 @@ public class PlayVideoActivity extends Activity implements OnCompletionListener,
 			}
 			mPlayer.release();
 			mPlayer = null;
+			mController = null;
 		}
 
 	}
@@ -193,10 +211,59 @@ public class PlayVideoActivity extends Activity implements OnCompletionListener,
 	}
 
 	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		mController.show();
+		return false;
+	}
+
+	public void start() {
+		mPlayer.start();
+	}
+
+	public void pause() {
+		mPlayer.pause();
+	}
+
+	public int getDuration() {
+		return mPlayer.getDuration();
+	}
+
+	public int getCurrentPosition() {
+		return mPlayer.getCurrentPosition();
+	}
+
+	public void seekTo(int i) {
+		mPlayer.seekTo(i);
+	}
+
+	public boolean isPlaying() {
+		return mPlayer.isPlaying();
+	}
+
+	public int getBufferPercentage() {
+		return 0;
+	}
+
+	public boolean canPause() {
+		return true;
+	}
+
+	public boolean canSeekBackward() {
+		return true;
+	}
+
+	public boolean canSeekForward() {
+		return true;
+	}
+
+	@Override
+	public int getAudioSessionId() {
+		return 0;
+	}
+
+	@Override
 	public void onCompletion(MediaPlayer arg0) {
-		// 当MediaPlayer播放完成后触发
-		Log.v("Play Over:::", "onComletion called");
-		this.finish();
 
 	}
+
 }

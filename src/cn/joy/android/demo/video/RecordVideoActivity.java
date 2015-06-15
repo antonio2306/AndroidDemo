@@ -44,7 +44,7 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 	private int second = 0;
 	private String time = "";
 	private String size = "";
-	private final int maxSecond = 6; // 6s
+	private final int maxSecond = 10; // 10s
 	private final int maxSize = 5; // 5M
 
 	/**
@@ -155,14 +155,14 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 
 		// 设置录制视频源为Camera(相机)
 		mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-		// mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+		mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 
 		mediaRecorder.setOrientationHint(90);//视频旋转90度
 		// 设置录制完成后视频的封装格式THREE_GPP为3gp.MPEG_4为mp4
 		mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 		// 设置录制的视频编码h263 h264
 		mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-		// mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+		mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
 
 		// 设置视频录制的分辨率。必须放在设置编码和格式的后面，否则报错
 		// mediaRecorder.setVideoSize(480, 360);
